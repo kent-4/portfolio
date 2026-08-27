@@ -14,7 +14,7 @@ export default function Hero() {
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     const words = headlineRef.current.querySelectorAll(".word");
@@ -40,7 +40,10 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="top" className="mx-auto max-w-content px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+    <section
+      id="top"
+      className="mx-auto max-w-content px-6 pt-16 pb-20 md:pt-24 md:pb-28"
+    >
       <motion.p
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
@@ -55,8 +58,13 @@ export default function Hero() {
         className="font-display text-4xl md:text-6xl font-semibold tracking-tight leading-[1.08] max-w-3xl"
       >
         {HEADLINE.split(" ").map((word, i) => (
-          <span key={i} className="inline-block overflow-hidden align-top pb-1 mr-[0.28em]">
-            <span className="word inline-block will-change-transform">{word}</span>
+          <span
+            key={i}
+            className="inline-block overflow-hidden align-top pb-1 mr-[0.28em]"
+          >
+            <span className="word inline-block will-change-transform">
+              {word}
+            </span>
           </span>
         ))}
       </h1>
@@ -67,9 +75,10 @@ export default function Hero() {
         transition={{ duration: 0.55, delay: 0.85 }}
         className="mt-6 text-lg text-inkSoft max-w-xl leading-relaxed"
       >
-        BSIT student and full-stack developer who's shipped a genetic-algorithm
-        scheduling engine, a microservices archiving platform, and production
-        features at a real dev team. I go from database schema to deployed UI.
+        Fresh IT graduate and full-stack developer who's shipped a
+        genetic-algorithm scheduling engine, a microservices archiving platform,
+        and production features at a real dev team. I go from database schema to
+        deployed UI.
       </motion.p>
 
       <motion.div

@@ -17,12 +17,12 @@ const links = [
   {
     icon: Linkedin,
     label: "LinkedIn",
-    href: "#", // replace with your real LinkedIn URL
+    href: "https://www.linkedin.com/in/kent-demoreta-556208324/",
   },
   {
     icon: Github,
     label: "GitHub",
-    href: "#", // replace with your real GitHub URL
+    href: "https://github.com/kent-4",
   },
 ];
 
@@ -45,7 +45,7 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
           className="font-display text-3xl md:text-4xl font-semibold max-w-xl mx-auto leading-tight"
         >
-          Open to internship, junior, and full-stack roles.
+          Open to junior and full-stack roles.
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 10 }}
