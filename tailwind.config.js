@@ -7,16 +7,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        paper: "#F6F7F5",
-        paperDim: "#EDEFEB",
-        ink: "#12141C",
-        inkSoft: "#4B5160",
-        inkFaint: "#8A8F98",
-        teal: "#0E7C66",
-        tealSoft: "#E4F2EE",
-        amber: "#C08A2E",
-        amberSoft: "#F5EBD8",
-        line: "#DDE2DE",
+        canvas: "var(--color-canvas)",
+        surface: "var(--color-surface)",
+        surfaceElevated: "var(--color-surface-elevated)",
+        ink: "var(--color-ink)",
+        inkSoft: "var(--color-ink-soft)",
+        inkFaint: "var(--color-ink-faint)",
+        accent: "var(--color-accent)",
+        accentSoft: "var(--color-accent-soft)",
+        line: "var(--color-line)",
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],

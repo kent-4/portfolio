@@ -1,0 +1,26 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="750" fill="#EDEFEB"/>
+  <rect width="1200" height="76" fill="#0E7C66"/>
+  <circle cx="38" cy="38" r="8" fill="#F5EBD8"/>
+  <rect x="70" y="30" width="228" height="16" rx="8" fill="#F6F7F5" fill-opacity="0.8"/>
+  <rect x="980" y="28" width="74" height="20" rx="10" fill="#F6F7F5" fill-opacity="0.25"/>
+  <circle cx="1090" cy="38" r="16" fill="#F6F7F5" fill-opacity="0.35"/>
+  <rect x="64" y="124" width="1072" height="92" rx="12" fill="#FFFFFF"/>
+  <rect x="96" y="153" width="310" height="18" rx="9" fill="#12141C" fill-opacity="0.75"/>
+  <rect x="850" y="148" width="234" height="30" rx="8" fill="#E4F2EE"/>
+  <rect x="64" y="252" width="510" height="422" rx="12" fill="#FFFFFF" stroke="#DDE2DE" stroke-width="2"/>
+  <rect x="606" y="252" width="530" height="198" rx="12" fill="#FFFFFF" stroke="#DDE2DE" stroke-width="2"/>
+  <rect x="606" y="476" width="530" height="198" rx="12" fill="#FFFFFF" stroke="#DDE2DE" stroke-width="2"/>
+  <rect x="96" y="286" width="208" height="14" rx="7" fill="#0E7C66" fill-opacity="0.7"/>
+  <rect x="96" y="336" width="442" height="54" rx="8" fill="#E4F2EE"/>
+  <rect x="96" y="410" width="442" height="54" rx="8" fill="#F6F7F5"/>
+  <rect x="96" y="484" width="442" height="54" rx="8" fill="#F6F7F5"/>
+  <rect x="96" y="578" width="146" height="34" rx="8" fill="#0E7C66"/>
+  <path d="M638 386H1098M638 610H1098" stroke="#DDE2DE" stroke-width="2"/>
+  <path d="M700 350V410M772 328V410M844 366V410M916 340V410M988 356V410" stroke="#0E7C66" stroke-width="18" stroke-linecap="round" stroke-opacity="0.65"/>
+  <circle cx="704" cy="592" r="34" fill="#0E7C66" fill-opacity="0.15"/>
+  <circle cx="704" cy="592" r="14" fill="#0E7C66" fill-opacity="0.7"/>
+  <rect x="764" y="578" width="260" height="16" rx="8" fill="#12141C" fill-opacity="0.65"/>
+  <rect x="764" y="610" width="188" height="12" rx="6" fill="#8A8F98" fill-opacity="0.6"/>
+  <text x="64" y="716" fill="#0E7C66" font-family="monospace" font-size="18" letter-spacing="2">PROJECT PREVIEW / REPLACE WITH SCREENSHOT</text>
+</svg>

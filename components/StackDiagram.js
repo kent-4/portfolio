@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 // A schematic of how Kent actually builds: interface -> service -> data -> infra.
 // Each column is a real layer from his stack, not a decorative icon grid.
@@ -42,6 +42,7 @@ const lineVariants = {
 };
 
 export default function StackDiagram() {
+  const reducedMotion = useReducedMotion();
   let flatIndex = 0;
 
   return (
@@ -49,7 +50,7 @@ export default function StackDiagram() {
       <div className="relative">
         {/* connecting lines between columns, drawn behind the nodes */}
         <svg
-          className="absolute inset-0 w-full h-full pointer-events-none hidden md:block"
+          className="pointer-events-none absolute inset-0 hidden h-full w-full md:block"
           viewBox="0 0 900 220"
           preserveAspectRatio="none"
           aria-hidden="true"
@@ -64,20 +65,21 @@ export default function StackDiagram() {
                 y1={45 + rowIndex * 65}
                 x2={x2}
                 y2={45 + rowIndex * 65}
-                stroke="#0E7C66"
+                stroke="currentColor"
+                className="text-accent"
                 strokeWidth="1.5"
                 strokeDasharray="4 3"
                 custom={colIndex * 3 + rowIndex}
                 variants={lineVariants}
-                initial="hidden"
-                animate="visible"
+                initial={reducedMotion ? false : "hidden"}
+                animate={reducedMotion ? undefined : "visible"}
                 opacity="0.35"
               />
             ));
           })}
         </svg>
 
-        <div className="relative grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
+        <div className="relative grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-4">
           {layers.map((layer) => (
             <div key={layer.label} className="flex flex-col gap-3">
               <span className="tag text-inkFaint">{layer.label}</span>
@@ -89,9 +91,9 @@ export default function StackDiagram() {
                       key={node}
                       custom={i}
                       variants={nodeVariants}
-                      initial="hidden"
-                      animate="visible"
-                      className="rounded-md border border-line bg-white px-3 py-2 text-sm text-ink shadow-sm"
+                      initial={reducedMotion ? false : "hidden"}
+                      animate={reducedMotion ? undefined : "visible"}
+                      className="rounded-lg border border-line bg-surfaceElevated px-3 py-2 text-sm text-ink"
                     >
                       {node}
                     </motion.div>
@@ -104,16 +106,13 @@ export default function StackDiagram() {
       </div>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={reducedMotion ? false : { opacity: 0 }}
+        animate={reducedMotion ? undefined : { opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.5 }}
-        className="mt-6 flex items-center gap-2"
+        className="mt-6 flex items-center gap-3"
       >
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal opacity-60" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-teal" />
-        </span>
-        <span className="tag text-inkFaint">currently shipping at Make Technology</span>
+        <span className="h-px w-8 bg-accent" aria-hidden="true" />
+        <span className="tag text-inkFaint">Currently shipping at Make Technology</span>
       </motion.div>
     </div>
   );

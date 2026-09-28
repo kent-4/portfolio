@@ -1,0 +1,30 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="750" fill="#F5EBD8"/>
+  <rect width="1200" height="76" fill="#12141C"/>
+  <circle cx="38" cy="38" r="8" fill="#C08A2E"/>
+  <rect x="70" y="30" width="196" height="16" rx="8" fill="#F6F7F5" fill-opacity="0.8"/>
+  <rect x="934" y="28" width="88" height="20" rx="10" fill="#C08A2E" fill-opacity="0.8"/>
+  <rect x="1044" y="28" width="112" height="20" rx="10" fill="#F6F7F5" fill-opacity="0.2"/>
+  <rect x="64" y="124" width="1072" height="116" rx="12" fill="#FFFFFF" fill-opacity="0.8"/>
+  <rect x="96" y="158" width="290" height="22" rx="11" fill="#12141C" fill-opacity="0.75"/>
+  <rect x="96" y="196" width="468" height="12" rx="6" fill="#8A8F98" fill-opacity="0.65"/>
+  <rect x="64" y="276" width="334" height="378" rx="12" fill="#FFFFFF" stroke="#DDE2DE" stroke-width="2"/>
+  <rect x="432" y="276" width="334" height="378" rx="12" fill="#FFFFFF" stroke="#DDE2DE" stroke-width="2"/>
+  <rect x="800" y="276" width="336" height="378" rx="12" fill="#FFFFFF" stroke="#DDE2DE" stroke-width="2"/>
+  <rect x="96" y="312" width="270" height="112" rx="8" fill="#E4F2EE"/>
+  <rect x="464" y="312" width="270" height="112" rx="8" fill="#E4F2EE"/>
+  <rect x="832" y="312" width="272" height="112" rx="8" fill="#E4F2EE"/>
+  <circle cx="138" cy="368" r="28" fill="#0E7C66" fill-opacity="0.65"/>
+  <circle cx="506" cy="368" r="28" fill="#C08A2E" fill-opacity="0.7"/>
+  <circle cx="874" cy="368" r="28" fill="#0E7C66" fill-opacity="0.35"/>
+  <rect x="96" y="458" width="196" height="14" rx="7" fill="#12141C" fill-opacity="0.7"/>
+  <rect x="464" y="458" width="220" height="14" rx="7" fill="#12141C" fill-opacity="0.7"/>
+  <rect x="832" y="458" width="212" height="14" rx="7" fill="#12141C" fill-opacity="0.7"/>
+  <rect x="96" y="496" width="242" height="12" rx="6" fill="#8A8F98" fill-opacity="0.65"/>
+  <rect x="464" y="496" width="244" height="12" rx="6" fill="#8A8F98" fill-opacity="0.65"/>
+  <rect x="832" y="496" width="230" height="12" rx="6" fill="#8A8F98" fill-opacity="0.65"/>
+  <rect x="96" y="574" width="116" height="32" rx="8" fill="#0E7C66"/>
+  <rect x="464" y="574" width="116" height="32" rx="8" fill="#0E7C66"/>
+  <rect x="832" y="574" width="116" height="32" rx="8" fill="#0E7C66"/>
+  <text x="64" y="716" fill="#C08A2E" font-family="monospace" font-size="18" letter-spacing="2">PROJECT PREVIEW / REPLACE WITH SCREENSHOT</text>
+</svg>

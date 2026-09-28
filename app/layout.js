@@ -21,15 +21,15 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Kent Daniel De Moreta — Full-Stack Developer",
+  title: "Kent Daniel De Moreta - Full-Stack Developer",
   description:
-    "Full-stack developer building systems across Java/Spring Boot, React/Next.js, and Python — from database schemas to shipped interfaces.",
+    "Full-stack developer building systems across Java, Spring Boot, React, Next.js, and Python from database schemas to shipped interfaces.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body className="font-body bg-paper text-ink antialiased">
+      <body className="font-body bg-canvas text-ink antialiased">
         <MotionProvider>{children}</MotionProvider>
       </body>
     </html>

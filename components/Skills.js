@@ -1,101 +1,95 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion } from "motion/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, useReducedMotion } from "motion/react";
 
 const groups = [
   {
-    label: "Languages",
-    items: ["Java", "JavaScript", "TypeScript", "Python", "SQL"],
+    label: "Core build",
+    items: [
+      "Java",
+      "Spring Boot",
+      "Spring Security",
+      "React",
+      "React Native",
+      "Next.js",
+      "Python",
+    ],
   },
   {
-    label: "Frameworks & Libraries",
-    items: ["Spring Boot", "Spring Security", "React", "React Native", "Next.js", "Bootstrap"],
+    label: "Data layer",
+    items: ["SQL", "MySQL", "MongoDB", "Redis", "Elasticsearch"],
   },
   {
-    label: "Databases",
-    items: ["MySQL", "MongoDB", "Redis", "Elasticsearch"],
+    label: "Delivery",
+    items: [
+      "JavaScript",
+      "TypeScript",
+      "Bootstrap",
+      "Git",
+      "GitHub",
+      "Docker",
+      "Android Studio",
+      "Maven",
+      "Postman",
+      "Jira",
+      "AWS S3",
+    ],
   },
   {
-    label: "Tools & Platforms",
-    items: ["Git", "GitHub", "Docker", "Android Studio", "Maven", "Postman", "Jira", "AWS S3"],
-  },
-  {
-    label: "AI-Assisted Dev",
+    label: "AI-assisted",
     items: ["GitHub Copilot", "Codex", "Claude"],
   },
 ];
 
 export default function Skills() {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    const tags = containerRef.current.querySelectorAll(".skill-tag");
-
-    if (prefersReducedMotion) {
-      gsap.set(tags, { opacity: 1, scale: 1 });
-      return;
-    }
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-      gsap.set(tags, { opacity: 0, scale: 0.92, y: 4 });
-
-      ScrollTrigger.batch(tags, {
-        start: "top 88%",
-        once: true,
-        onEnter: (batch) =>
-          gsap.to(batch, {
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            duration: 0.35,
-            stagger: 0.025,
-            ease: "power2.out",
-          }),
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+  const reducedMotion = useReducedMotion();
 
   return (
-    <section id="skills" className="border-t border-line" ref={containerRef}>
-      <div className="mx-auto max-w-content px-6 py-20 grid md:grid-cols-[200px_1fr] gap-8">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="section-label"
+    <section id="skills" className="border-t border-line bg-canvas">
+      <div className="mx-auto grid max-w-content gap-12 px-6 py-24 md:py-32 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-20">
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          Skills
-        </motion.p>
+          <p className="eyebrow">Skills</p>
+          <h2 className="mt-5 max-w-md font-display text-3xl font-semibold tracking-tight text-ink md:text-5xl">
+            The stack I work across.
+          </h2>
+          <p className="mt-5 max-w-sm leading-relaxed text-inkSoft">
+            Tools I use to move from interface to service, data, and delivery.
+          </p>
+        </motion.div>
 
-        <div className="space-y-6 max-w-2xl">
-          {groups.map((group) => (
-            <div
+        <div className="space-y-8">
+          {groups.map((group, groupIndex) => (
+            <motion.div
               key={group.label}
-              className="grid grid-cols-[140px_1fr] gap-4 items-baseline"
+              initial={reducedMotion ? false : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{
+                duration: 0.55,
+                delay: reducedMotion ? 0 : groupIndex * 0.06,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="border-t border-line pt-5"
             >
-              <span className="text-sm text-inkFaint">{group.label}</span>
-              <div className="flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <span
-                    key={item}
-                    className="skill-tag tag border border-line px-2.5 py-1 rounded text-inkSoft inline-block"
-                  >
-                    {item}
-                  </span>
-                ))}
+              <div className="grid gap-4 md:grid-cols-[140px_minmax(0,1fr)] md:items-start md:gap-6">
+                <span className="tag text-accent">{group.label}</span>
+                <div className="flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-lg border border-line bg-surface px-3 py-2 text-sm text-inkSoft"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

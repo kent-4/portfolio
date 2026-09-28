@@ -1,49 +1,52 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 const bullets = [
-  "Resolved QA-reported issues in a React Native app — UI layouts, state management, form validation — improving stability and UX.",
-  "Built Android APKs in Android Studio for QA testing and regression validation, keeping build delivery on schedule.",
-  "Developed a Report Extraction page with React.js, Next.js, and TypeScript, letting users export reports to Excel.",
-  "Worked in Git Flow with feature branches and pull requests; tracked work in Jira and coordinated with the team in Slack.",
-  "Took part in the full SDLC — feature development, code review, debugging, testing, and QA validation — end to end.",
+  "Resolved QA-reported issues in a React Native app across UI layouts, state management, and form validation.",
+  "Built Android APKs in Android Studio for QA testing and regression validation.",
+  "Developed a Report Extraction page with React.js, Next.js, and TypeScript that exports reports to Excel.",
+  "Worked in Git Flow with feature branches and pull requests while tracking work in Jira and coordinating in Slack.",
+  "Contributed across the full SDLC, including feature development, code review, debugging, testing, and QA validation.",
 ];
 
 export default function Experience() {
-  return (
-    <section id="experience" className="border-t border-line">
-      <div className="mx-auto max-w-content px-6 py-20 grid md:grid-cols-[200px_1fr] gap-8">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="section-label"
-        >
-          Experience
-        </motion.p>
+  const reducedMotion = useReducedMotion();
 
+  return (
+    <section id="experience" className="border-t border-line bg-canvas">
+      <div className="mx-auto max-w-content px-6 py-24 md:py-32">
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-            <h3 className="font-display text-xl font-semibold">
-              Software Developer Intern
-            </h3>
-            <span className="tag text-inkFaint">Feb 2026 – May 2026</span>
+          <p className="eyebrow">Experience</p>
+          <h2 className="mt-5 max-w-3xl font-display text-3xl font-semibold tracking-tight text-ink md:text-5xl">
+            Building with a team.
+          </h2>
+
+          <div className="mt-12 grid gap-8 border-b border-line pb-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
+            <div>
+              <h3 className="font-display text-2xl font-semibold text-ink">
+                Software Developer Intern
+              </h3>
+              <p className="mt-2 text-accent">
+                Make Technology, Makati, Philippines
+              </p>
+            </div>
+            <span className="tag text-inkFaint">Feb 2026 - May 2026</span>
           </div>
-          <p className="text-teal font-medium mb-5">
-            Make Technology · Makati, Philippines
-          </p>
-          <ul className="space-y-3">
-            {bullets.map((bullet) => (
-              <li key={bullet} className="flex gap-3 text-inkSoft leading-relaxed">
-                <span className="text-teal mt-2 h-1.5 w-1.5 rounded-full bg-teal flex-shrink-0" />
-                <span>{bullet}</span>
+
+          <ul className="divide-y divide-line">
+            {bullets.map((bullet, index) => (
+              <li
+                key={bullet}
+                className="grid gap-3 py-5 text-inkSoft md:grid-cols-[48px_minmax(0,1fr)] md:gap-6"
+              >
+                <span className="tag text-accent">0{index + 1}</span>
+                <span className="max-w-3xl leading-relaxed">{bullet}</span>
               </li>
             ))}
           </ul>

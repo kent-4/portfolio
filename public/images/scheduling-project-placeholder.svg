@@ -1,0 +1,25 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="750" fill="#F6F7F5"/>
+  <rect width="1200" height="76" fill="#12141C"/>
+  <circle cx="38" cy="38" r="8" fill="#0E7C66"/>
+  <rect x="70" y="30" width="184" height="16" rx="8" fill="#F6F7F5" fill-opacity="0.8"/>
+  <rect x="930" y="28" width="92" height="20" rx="10" fill="#0E7C66" fill-opacity="0.7"/>
+  <rect x="1044" y="28" width="112" height="20" rx="10" fill="#F6F7F5" fill-opacity="0.2"/>
+  <rect x="64" y="124" width="1072" height="84" rx="12" fill="#E4F2EE"/>
+  <text x="96" y="174" fill="#12141C" font-family="sans-serif" font-size="28" font-weight="600">SCHEDULING SYSTEM</text>
+  <rect x="64" y="244" width="300" height="430" rx="12" fill="#FFFFFF" stroke="#DDE2DE" stroke-width="2"/>
+  <rect x="96" y="280" width="156" height="14" rx="7" fill="#0E7C66" fill-opacity="0.7"/>
+  <rect x="96" y="322" width="236" height="42" rx="8" fill="#E4F2EE"/>
+  <rect x="96" y="382" width="236" height="42" rx="8" fill="#F5EBD8"/>
+  <rect x="96" y="442" width="236" height="42" rx="8" fill="#EDEFEB"/>
+  <rect x="96" y="502" width="184" height="42" rx="8" fill="#EDEFEB"/>
+  <rect x="96" y="598" width="118" height="34" rx="8" fill="#0E7C66"/>
+  <rect x="396" y="244" width="740" height="430" rx="12" fill="#FFFFFF" stroke="#DDE2DE" stroke-width="2"/>
+  <path d="M430 342H1100M430 414H1100M430 486H1100M430 558H1100M430 630H1100" stroke="#DDE2DE" stroke-width="2"/>
+  <path d="M546 280V638M662 280V638M778 280V638M894 280V638M1010 280V638" stroke="#DDE2DE" stroke-width="2"/>
+  <rect x="446" y="298" width="80" height="30" rx="6" fill="#0E7C66" fill-opacity="0.25"/>
+  <rect x="676" y="370" width="148" height="30" rx="6" fill="#0E7C66" fill-opacity="0.7"/>
+  <rect x="908" y="442" width="84" height="30" rx="6" fill="#C08A2E" fill-opacity="0.7"/>
+  <rect x="562" y="514" width="196" height="30" rx="6" fill="#0E7C66" fill-opacity="0.35"/>
+  <text x="64" y="716" fill="#0E7C66" font-family="monospace" font-size="18" letter-spacing="2">PROJECT PREVIEW / REPLACE WITH SCREENSHOT</text>
+</svg>

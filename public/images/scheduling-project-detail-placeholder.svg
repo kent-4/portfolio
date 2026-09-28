@@ -1,0 +1,25 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="750" fill="#F6F7F5"/>
+  <rect width="1200" height="76" fill="#12141C"/>
+  <circle cx="38" cy="38" r="8" fill="#0E7C66"/>
+  <rect x="70" y="30" width="232" height="16" rx="8" fill="#F6F7F5" fill-opacity="0.8"/>
+  <rect x="956" y="28" width="200" height="20" rx="10" fill="#F6F7F5" fill-opacity="0.18"/>
+  <rect x="64" y="124" width="1072" height="68" rx="12" fill="#E4F2EE"/>
+  <rect x="96" y="150" width="212" height="16" rx="8" fill="#12141C" fill-opacity="0.72"/>
+  <rect x="880" y="142" width="220" height="32" rx="8" fill="#0E7C66" fill-opacity="0.76"/>
+  <rect x="64" y="228" width="1072" height="446" rx="12" fill="#FFFFFF" stroke="#DDE2DE" stroke-width="2"/>
+  <rect x="96" y="262" width="186" height="14" rx="7" fill="#0E7C66" fill-opacity="0.72"/>
+  <path d="M96 330H1104M96 398H1104M96 466H1104M96 534H1104M96 602H1104" stroke="#DDE2DE" stroke-width="2"/>
+  <path d="M320 298V638M430 298V638M540 298V638M650 298V638M760 298V638M870 298V638M980 298V638" stroke="#DDE2DE" stroke-width="2"/>
+  <rect x="118" y="308" width="146" height="34" rx="8" fill="#EDEFEB"/>
+  <rect x="118" y="376" width="146" height="34" rx="8" fill="#EDEFEB"/>
+  <rect x="118" y="444" width="146" height="34" rx="8" fill="#EDEFEB"/>
+  <rect x="118" y="512" width="146" height="34" rx="8" fill="#EDEFEB"/>
+  <rect x="118" y="580" width="146" height="34" rx="8" fill="#EDEFEB"/>
+  <rect x="344" y="310" width="274" height="30" rx="8" fill="#0E7C66" fill-opacity="0.72"/>
+  <rect x="566" y="378" width="164" height="30" rx="8" fill="#C08A2E" fill-opacity="0.72"/>
+  <rect x="706" y="446" width="242" height="30" rx="8" fill="#0E7C66" fill-opacity="0.38"/>
+  <rect x="454" y="514" width="318" height="30" rx="8" fill="#0E7C66" fill-opacity="0.72"/>
+  <rect x="816" y="582" width="180" height="30" rx="8" fill="#C08A2E" fill-opacity="0.72"/>
+  <text x="64" y="716" fill="#0E7C66" font-family="monospace" font-size="18" letter-spacing="2">TIMETABLE DETAIL / REPLACE WITH SCREENSHOT</text>
+</svg>

@@ -2,29 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: dark;
+  --color-canvas: #0f1411;
+  --color-surface: #171d19;
+  --color-surface-elevated: #1f2822;
+  --color-ink: #f0f4ef;
+  --color-ink-soft: #a5b2a9;
+  --color-ink-faint: #87978d;
+  --color-accent: #62c7a5;
+  --color-accent-soft: #203d32;
+  --color-line: #2b3830;
+}
+
 html {
   scroll-behavior: smooth;
+  background: var(--color-canvas);
+}
+
+section {
+  scroll-margin-top: 72px;
 }
 
 body {
-  background-color: #F6F7F5;
-  color: #12141C;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  line-height: 1.65;
 }
 
 ::selection {
-  background-color: #0E7C66;
-  color: #F6F7F5;
+  background-color: var(--color-accent);
+  color: var(--color-canvas);
 }
 
-/* Visible keyboard focus, kept everywhere */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #0E7C66;
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
-/* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -34,18 +51,23 @@ button:focus-visible {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  a:hover,
+  button:hover {
+    transform: none !important;
+  }
 }
 
-.section-label {
+.eyebrow {
   font-family: var(--font-mono), monospace;
   font-size: 0.75rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #0E7C66;
+  color: var(--color-accent);
 }
 
 .tag {
   font-family: var(--font-mono), monospace;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.02em;
 }

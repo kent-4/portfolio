@@ -1,108 +1,101 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion } from "motion/react";
-import gsap from "gsap";
+import Image from "next/image";
+import { motion, useReducedMotion } from "motion/react";
 import StackDiagram from "./StackDiagram";
-import MagneticButton from "./MagneticButton";
 
-const HEADLINE =
-  "I build the layer people click, and the one underneath that makes it work.";
+const HEADLINE = "I build reliable products from the data layer up.";
+const SUPPORTING_COPY =
+  "Full-stack developer focused on Java, React, Python, and practical systems that ship.";
+// Configure only verified assets. A profile uses { src, alt }; resume is a URL.
+const heroAssets = { profile: null, resume: null };
 
-export default function Hero() {
-  const headlineRef = useRef(null);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    const words = headlineRef.current.querySelectorAll(".word");
-
-    if (prefersReducedMotion) {
-      gsap.set(words, { yPercent: 0, opacity: 1 });
-      return;
-    }
-
-    const ctx = gsap.context(() => {
-      gsap.set(words, { yPercent: 120, opacity: 0 });
-      gsap.to(words, {
-        yPercent: 0,
-        opacity: 1,
-        duration: 0.9,
-        stagger: 0.035,
-        ease: "power4.out",
-        delay: 0.15,
-      });
-    }, headlineRef);
-
-    return () => ctx.revert();
-  }, []);
+function HeroPortrait({ profile }) {
+  const reducedMotion = useReducedMotion();
 
   return (
-    <section
-      id="top"
-      className="mx-auto max-w-content px-6 pt-16 pb-20 md:pt-24 md:pb-28"
+    <motion.div
+      initial={reducedMotion ? false : { opacity: 0, y: 18, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      className="relative aspect-[4/5] w-full max-w-xs overflow-hidden rounded-xl border border-line bg-surface"
     >
-      <motion.p
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="section-label mb-5"
-      >
-        Full-stack developer · Taytay, Rizal, PH
-      </motion.p>
+      <Image
+        src={profile.src}
+        alt={profile.alt}
+        fill
+        priority
+        sizes="(min-width: 1024px) 240px, 288px"
+        className="object-cover"
+      />
+    </motion.div>
+  );
+}
 
-      <h1
-        ref={headlineRef}
-        className="font-display text-4xl md:text-6xl font-semibold tracking-tight leading-[1.08] max-w-3xl"
-      >
-        {HEADLINE.split(" ").map((word, i) => (
-          <span
-            key={i}
-            className="inline-block overflow-hidden align-top pb-1 mr-[0.28em]"
-          >
-            <span className="word inline-block will-change-transform">
-              {word}
-            </span>
-          </span>
-        ))}
-      </h1>
+export default function Hero() {
+  const reducedMotion = useReducedMotion();
 
-      <motion.p
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55, delay: 0.85 }}
-        className="mt-6 text-lg text-inkSoft max-w-xl leading-relaxed"
-      >
-        Fresh IT graduate and full-stack developer who's shipped a
-        genetic-algorithm scheduling engine, a microservices archiving platform,
-        and production features at a real dev team. I go from database schema to
-        deployed UI.
-      </motion.p>
+  return (
+    <section id="top">
+      <div className="mx-auto max-w-content px-4 pb-12 pt-10 sm:px-6 lg:pb-16 lg:pt-12">
+        <div className={`grid items-start gap-8 ${heroAssets.profile ? "lg:grid-cols-[minmax(0,1fr)_240px]" : ""}`}>
+          <div className="min-w-0">
+            <motion.p
+              initial={reducedMotion ? false : { opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="eyebrow mb-5"
+            >
+              Full-stack developer
+            </motion.p>
 
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55, delay: 1 }}
-        className="mt-8 flex flex-wrap items-center gap-4"
-      >
-        <MagneticButton
-          href="#projects"
-          className="inline-block bg-teal text-white px-5 py-3 rounded-md text-sm font-medium hover:bg-ink transition-colors"
-        >
-          View my projects
-        </MagneticButton>
-        <a
-          href="/resume-placeholder.pdf"
-          className="border border-line px-5 py-3 rounded-md text-sm font-medium text-inkSoft hover:border-teal hover:text-teal transition-colors"
-        >
-          Download resume
-        </a>
-      </motion.div>
+            <motion.h1
+              initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="max-w-[26ch] font-display text-[36px] font-semibold leading-[1.08] tracking-[-0.04em] text-ink sm:text-[48px] lg:text-[56px]"
+            >
+              {HEADLINE}
+            </motion.h1>
 
-      <div className="mt-16 md:mt-20">
-        <StackDiagram />
+            <motion.p
+              initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-5 max-w-[65ch] text-base leading-[1.65] text-inkSoft"
+            >
+              {SUPPORTING_COPY}
+            </motion.p>
+
+            <motion.div
+              initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-6 flex flex-wrap items-center gap-4"
+            >
+              <a
+                href="#projects"
+                className="whitespace-nowrap rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-canvas transition-colors hover:bg-ink hover:text-canvas"
+              >
+                See selected work
+              </a>
+              {heroAssets.resume && (
+                <a
+                  href={heroAssets.resume}
+                  className="whitespace-nowrap rounded-lg border border-line px-5 py-3 text-sm font-medium text-inkSoft transition-colors hover:border-accent hover:text-accent"
+                >
+                  Download resume
+                </a>
+              )}
+            </motion.div>
+          </div>
+
+          {heroAssets.profile && <HeroPortrait profile={heroAssets.profile} />}
+        </div>
+
+        <div className="mt-8 rounded-xl border border-line bg-surface p-4 md:p-5">
+          <StackDiagram />
+        </div>
       </div>
     </section>
   );

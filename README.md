@@ -1,77 +1,114 @@
 # Kent Daniel De Moreta — Portfolio
 
-A clean, professional portfolio built with **Next.js 14 (App Router)**, **Tailwind CSS**, **Motion** (the motion.dev library, formerly Framer Motion), and **GSAP** (with ScrollTrigger). The centerpiece is an animated architecture diagram in the hero that maps your real stack (interface → service → data → infra) instead of a generic icon grid.
+A responsive developer portfolio built with Next.js 14 App Router, Tailwind CSS, and Motion. Its engineering dossier layout presents Kent's experience and selected projects as readable, mostly unboxed content, with a full-width architecture diagram and reduced-motion support.
 
-## Run it locally
+## Local development
 
-You'll need [Node.js 18+](https://nodejs.org/) installed.
+Use Node.js 20 or newer.
 
 ```bash
-# 1. Install dependencies
-npm install
-
-# 2. Start the dev server
+npm ci
 npm run dev
-
-# 3. Open http://localhost:3000 in your browser
 ```
 
-## Deploy it (free)
+Open [http://localhost:3000](http://localhost:3000).
 
-The fastest path:
+## Validation
 
-1. Push this folder to a new GitHub repository.
-2. Go to [vercel.com](https://vercel.com), sign in with GitHub, and import the repo.
-3. Leave all settings as default and click **Deploy**. Vercel auto-detects Next.js.
-4. You'll get a live URL (e.g. `kent-portfolio.vercel.app`) in about a minute. Every push to `main` redeploys automatically.
+```bash
+npm run lint
+npm run build
+```
 
-Netlify works the same way if you prefer it.
+Run both checks with:
 
-## What to customize before you publish
+```bash
+npm run check
+```
 
-- **`public/resume-placeholder.pdf`** — replace with your real resume PDF (keep the same filename, or update the link in `components/Hero.js`).
-- **`components/Contact.js`** — swap the `#` placeholders for your real LinkedIn and GitHub URLs.
-- **Profile photo** — there isn't one yet by design (you said you'd add it later). If you want to add one, drop an image in `public/` and add an `<Image>` next to the headline in `components/Hero.js` (use `next/image` for automatic optimization).
-- **Project links** — the three project cards in `components/Projects.js` link to `#`. Point them to live demos or GitHub repos once you have them.
-- **Copy** — the bio in `components/About.js` and headline in `components/Hero.js` are written from your CV. Adjust the voice/wording to sound like you.
+The same lint and production-build checks run in GitHub Actions for pull requests and pushes to `main`.
+
+## Agentic coding setup
+
+The repository includes:
+
+- `AGENTS.md` for project architecture, working agreements, validation, and delegation rules.
+- `.codex/config.toml` for project-scoped Motion MCP connections.
+- `.codex/agents/` for the `design_specialist`, `motion_specialist`, and `verifier` roles and their scoped skill settings.
+
+The main agent coordinates changes and owns final integration. Specialist agents are intended for substantial matching work, not every small edit:
+
+| Agent | Responsibility | Required local skill |
+| --- | --- | --- |
+| `design_specialist` | Layout, visual hierarchy, typography, responsive behavior, and accessibility | `design-taste-frontend` |
+| `motion_specialist` | Motion/CSS animation, interaction timing, reduced motion, and animation performance | `motion` |
+| `verifier` | Diff review, lint, and production-build validation without tracked-file edits | None |
+
+Do not run the design and motion specialists concurrently when they may edit the same files. Sequence design first, motion second, and verification last.
+
+### Install the local skills
+
+Skill contents are intentionally machine-local and excluded from Git. From the repository root, install the design skill with:
+
+```bash
+npx skills add Leonxlnx/taste-skill --skill design-taste-frontend
+```
+
+Install the official Motion AI Kit with:
+
+```bash
+npx motion-ai
+```
+
+Choose project scope and install the skill into `.agents/skills`. After setup, these files should exist:
+
+```text
+.agents/skills/design-taste-frontend/SKILL.md
+.agents/skills/motion/SKILL.md
+```
+
+The Motion and Motion+ MCP endpoints are already declared in the tracked project configuration. Motion+ features may require signing in through the Codex MCP settings.
 
 ## Project structure
 
-```
+```text
 app/
-  layout.js       → fonts (Space Grotesk, Inter, JetBrains Mono) + global metadata
-  page.js         → assembles all sections
-  globals.css     → design tokens, focus states, reduced-motion handling
+  layout.js       fonts, metadata, and the global Motion provider
+  page.js         page composition
+  globals.css     design tokens, focus states, and reduced-motion fallback
 components/
-  Nav.js          → sticky header with in-page links
-  Hero.js         → headline + CTA + animated diagram
-  StackDiagram.js → the signature animated architecture diagram
-  About.js        → bio pulled from your CV
-  Experience.js   → Make Technology internship
-  Projects.js     → your 3 CV projects as cards
-  Skills.js       → grouped skill tags (languages, frameworks, DBs, tools, AI tools)
-  Contact.js      → email / phone / LinkedIn / GitHub links
-  Footer.js
+  Nav.js          responsive in-page navigation
+  Hero.js         introduction, optional assets, and architecture diagram
+  StackDiagram.js animated architecture diagram
+  About.js        biography
+  Experience.js   professional experience
+  Projects.js     project evidence and optional authentic screenshots
+  Skills.js       grouped technical skills
+  Contact.js      contact methods and social links
+  Footer.js       site footer
+public/
+  images/         profile and project image assets
+  resume-placeholder.pdf
 ```
 
-## Motion & GSAP: what's used where
+## Motion behavior
 
-- **Motion (motion.dev)** handles simple declarative entrances — fades and slide-ins on load or on scroll (`whileInView`). Used across `About.js`, `Experience.js`, `Contact.js`, and the supporting text in `Hero.js`.
-- **GSAP** handles the effects that need pointer tracking or scroll scrubbing, which Motion doesn't target as precisely:
-  - `components/ScrollProgress.js` — a thin bar scrubbed to overall scroll position (`ScrollTrigger`, `scrub`).
-  - `components/Hero.js` — the headline splits into words and reveals with a staggered masked slide-up on load (`gsap.timeline`-style stagger).
-  - `components/MagneticButton.js` — the "View my projects" button eases toward the cursor within its bounds (`gsap.quickTo`).
-  - `components/useTilt.js` — a reusable hook giving the project cards a subtle 3D pointer-tilt; applied in `components/Projects.js`.
-  - `components/Skills.js` — the skill tags reveal in batches as you scroll to them (`ScrollTrigger.batch`).
+- Motion handles entrance reveals, the stack diagram, and restrained image interaction.
+- `MotionProvider` supplies the global reduced-motion policy.
+- Components also check `useReducedMotion` when an interaction needs a static fallback.
+- Projects use normal document flow with role, title, description, and stack preceding any configured media. There is no GSAP or pinned scroll sequence.
+- The dark green palette, existing typography, section order, and diagram content are retained. Desktop sections use a narrow label rail; mobile sections stack naturally.
 
-All GSAP effects check `prefers-reduced-motion` and skip themselves for users who have that set, and the tilt effect additionally skips on touch devices (no fine pointer). GSAP contexts (`gsap.context`) are used throughout so effects clean up properly if a component unmounts.
+## Optional assets and destinations
 
-## Design notes
+- Portrait and resume configuration are deliberately `null` until authentic assets are available. No placeholder frame or resume action is shown.
+- Each project starts with an empty `screenshots` array and a `null` destination. These states render the complete text entry without blank media space or a project action.
+- To enable authentic media, add the files under `public/` and explicitly configure their paths in `components/Hero.js` or `components/Projects.js`. Project screenshots retain the `{ src, alt, caption }` format. Use accurate alternative text and captions, and verify the real resume is a readable PDF before enabling its action.
+- Configure project destinations only when their repository or demo URLs are known. Existing contact, LinkedIn, and GitHub destinations are retained; verify their accuracy before publishing.
+- Existing placeholder files are retained as inactive files. Replacing or renaming them alone does not enable media or actions.
 
-- **Palette**: cool paper white background, near-black ink text, teal accent, amber for role labels — deliberately avoids the "cream + serif + terracotta" and "dark + neon" templates that AI-generated sites tend toward.
-- **Type**: Space Grotesk for headings (technical, geometric), Inter for body copy (readable), JetBrains Mono for tags and labels (reinforces the developer identity).
-- **Motion**: the hero diagram draws itself in on load; everything else fades in on scroll, once, so re-scrolling doesn't feel busy. `prefers-reduced-motion` is respected globally.
+Do not invent portfolio facts, screenshots, metrics, or links. Missing assets do not block the text-and-diagram presentation. `ANIMATION_IMAGE_INTEGRATION_PLAN.md` records the superseded image-led direction, not pending implementation work.
 
-## Notes on the code
+## Deployment
 
-This was hand-written rather than scaffolded via `create-next-app` (no network access in the environment that built it), so run `npm install` before anything else — the `node_modules` folder isn't included. If you hit a dependency resolution issue, running `npm install` again or deleting `package-lock.json` (there isn't one yet, so this shouldn't come up) usually resolves it.
+Push the repository to GitHub and import it into Vercel. The project uses standard Next.js defaults, so no custom build configuration is required.
