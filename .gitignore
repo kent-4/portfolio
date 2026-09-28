@@ -30,9 +30,15 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Local Codex/agent tooling
+# Machine-local agent skills
 .agents/
-.codex/
+skills-lock.json
+
+# Track only the shared project Codex configuration and agent definitions.
+.codex/*
+!.codex/config.toml
+!.codex/agents/
+!.codex/agents/*.toml
 
 # Certificates and private keys
 *.pem
