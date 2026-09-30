@@ -112,7 +112,7 @@ export default function StackDiagram() {
         className="mt-6 flex items-center gap-3"
       >
         <span className="h-px w-8 bg-accent" aria-hidden="true" />
-        <span className="tag text-inkFaint">Currently shipping at Make Technology</span>
+        <span className="tag text-inkFaint">Seeking for Opportunities</span>
       </motion.div>
     </div>
   );
